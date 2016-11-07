@@ -1,19 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.github.goldberg.customview.MainActivity">
 
 
-    <com.github.goldberg.customview.MView
+    <com.github.goldberg.customview.montage.MontageView
         android:id="@+id/mTextView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_below="@+id/customView"
+        android:padding="10dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="50dp"
-        android:background="@android:color/white"
-        />
+        android:visibility="visible"
+        app:textSize="56sp"
+        app:borderRadius="4dp"
+        app:animDuration="3000"
+        app:backGroundColor="@android:color/holo_green_light"
+        app:gapColor="@android:color/holo_green_light"
+        app:gapMaxWidth="10dp"
+        app:gapMinWidth="4dp"
+        app:textColor="@android:color/white" />
+
+    <com.github.goldberg.customview.telescope.TelescopeView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_dark"
+        android:visibility="gone" />
+
+    <com.github.goldberg.customview.shimmer.ShimmerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/shimmerView"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="ShimmerView"
+        android:textColor="#7B1FA2"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:reflectionColor="0xff3F51B5" />
+
+    <com.github.goldberg.customview.shimmer.ShimmerView
+        android:id="@+id/shimmerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="ShimmerView"
+        android:textColor="#aa666666"
+        android:textSize="60sp"
+        android:visibility="gone" />
+
 </RelativeLayout>

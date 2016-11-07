@@ -3,11 +3,13 @@ package com.github.goldberg.customview;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.github.goldberg.customview.montage.MontageView;
+
 public class MainActivity extends AppCompatActivity {
 
 
     String[] strings = new String[]{
-            "1", "2", "3", "for Android", "和平"
+            "1", "2", "3", "for Android", "trump is funny"
     };
     int i;
 
@@ -19,14 +21,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        final MView mView = (MView) findViewById(R.id.mTextView);
+        final MontageView mView = (MontageView) findViewById(R.id.mTextView);
+//        mView.setText("99999999");
         mView.postDelayed(new Runnable() {
             @Override
             public void run() {
                 mView.setText(strings[i++ % strings.length]);
-                mView.postDelayed(this, 2000);
+                mView.postDelayed(this, 3000);
             }
-        }, 2000);
+        }, 200);
 
 
     }
