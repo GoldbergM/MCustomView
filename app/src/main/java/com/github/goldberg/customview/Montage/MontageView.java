@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
@@ -155,7 +154,6 @@ public class MontageView extends View {
         gapRectWidth = (int) maxGapWidth;
         gapRect = new Rect(0, 0, gapRectWidth, gapRectHeight);
         degree = Math.asin(mWidth * 1.0f / gapRectHeight) * 180 / Math.PI;//canvas 倾斜角度
-//        degree = Math.asin(mWidth * 1.0f / gapRectHeight);//canvas 倾斜角度
         coverRectWidth = distanceToMove;
         coverRectHeight = gapRectHeight;
         coverRect = new Rect(0, 0, coverRectWidth, coverRectHeight);
@@ -221,5 +219,7 @@ public class MontageView extends View {
 
         }
     }
+
+
 
 }

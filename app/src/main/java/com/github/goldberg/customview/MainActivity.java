@@ -3,6 +3,7 @@ package com.github.goldberg.customview;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.github.goldberg.customview.circularprogressbar.MaterialProgressView;
 import com.github.goldberg.customview.montage.MontageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,13 +17,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initViews();
+        setContentView(R.layout.activity_progress);
+        final MaterialProgressView materialProgressView = (MaterialProgressView) findViewById(R.id.materialProgressView);
+//        initViews();
     }
 
     private void initViews() {
         final MontageView mView = (MontageView) findViewById(R.id.mTextView);
-//        mView.setText("99999999");
         mView.postDelayed(new Runnable() {
             @Override
             public void run() {

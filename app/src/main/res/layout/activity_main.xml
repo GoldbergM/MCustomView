@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_dark"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:gravity="center"
     tools:context="com.github.goldberg.customview.MainActivity">
 
 
@@ -13,18 +12,18 @@
         android:id="@+id/mTextView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:padding="10dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="50dp"
-        android:visibility="visible"
-        app:textSize="56sp"
-        app:borderRadius="4dp"
+        android:padding="10dp"
+        android:visibility="gone"
         app:animDuration="3000"
         app:backGroundColor="@android:color/holo_green_light"
+        app:borderRadius="4dp"
         app:gapColor="@android:color/holo_green_light"
         app:gapMaxWidth="10dp"
         app:gapMinWidth="4dp"
-        app:textColor="@android:color/white" />
+        app:textColor="@android:color/white"
+        app:textSize="56sp" />
 
     <com.github.goldberg.customview.telescope.TelescopeView
         android:layout_width="match_parent"
@@ -56,4 +55,20 @@
         android:textSize="60sp"
         android:visibility="gone" />
 
+    <com.github.goldberg.customview.circularprogressbar.MaterialProgressView
+        android:id="@+id/materialProgressView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="10dp"
+        android:visibility="gone"
+        app:angleDuration="3500"
+        app:border_Width="3dp"
+        app:minSweepAngle_="20"
+        app:paintColors="@array/colors"
+        app:sweepDuration="1000" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/materialProgressView" />
 </RelativeLayout>

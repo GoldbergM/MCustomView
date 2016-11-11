@@ -3,7 +3,7 @@
     <declare-styleable name="MontageView">
         <attr name="textColor" format="color" />
         <attr name="textSize" format="dimension" />
-        <attr name="borderRadius" format="dimension"/>
+        <attr name="borderRadius" format="dimension" />
         <attr name="backGroundColor" format="color" />
         <attr name="gapColor" format="color" />
         <attr name="gapMinWidth" format="dimension" />
@@ -13,5 +13,14 @@
 
     <declare-styleable name="ShimmerView">
         <attr name="reflectionColor" format="color|integer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="MaterialProgressView">
+        <attr name="border_Width" format="dimension" />
+        <attr name="paintColors" format="reference" />
+        <attr name="angleDuration" format="integer" />
+        <attr name="sweepDuration" format="integer" />
+        <attr name="minSweepAngle_" format="integer" />
     </declare-styleable>
 </resources>

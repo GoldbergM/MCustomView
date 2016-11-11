@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="com.github.goldberg.customview.MainActivity">
+
+    <com.github.goldberg.customview.circularprogressbar.MaterialProgressView
+        android:id="@+id/materialProgressView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="10dp"
+        android:visibility="visible"
+        app:angleDuration="2000"
+        app:border_Width="5dp"
+        app:minSweepAngle_="20"
+        app:paintColors="@array/colors"
+        app:sweepDuration="1000" />
+
+</RelativeLayout>
