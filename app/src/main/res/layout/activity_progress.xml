@@ -15,6 +15,7 @@
         android:visibility="visible"
         app:angleDuration="2000"
         app:border_Width="5dp"
+        app:minGapAngle="50"
         app:minSweepAngle_="20"
         app:paintColors="@array/colors"
         app:sweepDuration="1000" />

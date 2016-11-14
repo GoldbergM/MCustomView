@@ -45,8 +45,10 @@ public class MaterialProgressView extends View {
     private static final int SWEEP_DURATION_DEFAULT = 2000;
 
 
-    private int mMinSweepAngle;
-    private static final int MIN_SWEEP_ANGLE_DEFAULT = 30;
+    private int mMinSweepAngle;//保留的最小角度
+    private int mMinGapAngle;//最小间隙角度
+    private static final int MIN_SWEEP_ANGLE_DEFAULT = 20;
+    private static final int MIN_GAP_ANGLE_DEFAULT = 40;
 
     private int mCurrentAngle;//旋转的角度
     private int mCurrentSweepAngle;//draw的角度
@@ -110,6 +112,7 @@ public class MaterialProgressView extends View {
             mPaintColors = COLORS_DEFAULT;
         }
         mMinSweepAngle = typedArray.getInt(R.styleable.MaterialProgressView_minSweepAngle_, MIN_SWEEP_ANGLE_DEFAULT);
+        mMinGapAngle = typedArray.getInt(R.styleable.MaterialProgressView_minGapAngle, MIN_GAP_ANGLE_DEFAULT);
         mAngleDuration = typedArray.getInt(R.styleable.MaterialProgressView_angleDuration, ANGLE_DURATION_DEFAULT);
         mSweepDuration = typedArray.getInt(R.styleable.MaterialProgressView_sweepDuration, SWEEP_DURATION_DEFAULT);
         typedArray.recycle();
@@ -172,7 +175,7 @@ public class MaterialProgressView extends View {
                 mCurrentAngle = (int) animation.getAnimatedValue();
             }
         });
-        sweepValueAnimator = ValueAnimator.ofInt(0, 360 - mMinSweepAngle * 2);
+        sweepValueAnimator = ValueAnimator.ofInt(0, 360 - mMinSweepAngle - mMinGapAngle);
         sweepValueAnimator.setDuration(mSweepDuration);
         sweepValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         sweepValueAnimator.setRepeatMode(ValueAnimator.RESTART);
@@ -187,7 +190,7 @@ public class MaterialProgressView extends View {
                             animation.getAnimatedFraction()));
                 } else {
                     startAngle = mCurrentAngle + mCurrentSweepAngle - angleOffset;
-                    sweepAngle = 360 - mMinSweepAngle - mCurrentSweepAngle;
+                    sweepAngle = 360 - mMinGapAngle - mCurrentSweepAngle;
                 }
                 invalidate();
             }
@@ -200,7 +203,7 @@ public class MaterialProgressView extends View {
                 if (angleIncreasing) {
                     currentColorIndex = ++currentColorIndex % mPaintColors.length;
                     nextColorIndex = ++nextColorIndex % mPaintColors.length;
-                    angleOffset = (angleOffset + mMinSweepAngle * 2) % 360;
+                    angleOffset = (angleOffset + mMinSweepAngle + mMinGapAngle) % 360;
                 }
                 myHandler.post(runnable);
             }
@@ -289,7 +292,7 @@ public class MaterialProgressView extends View {
 
         private WeakReference<Context> contextWeakReference;
 
-        public MyHandler(Context context) {
+        private MyHandler(Context context) {
             contextWeakReference = new WeakReference<>(context);
         }
 

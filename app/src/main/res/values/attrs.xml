@@ -22,5 +22,6 @@
         <attr name="angleDuration" format="integer" />
         <attr name="sweepDuration" format="integer" />
         <attr name="minSweepAngle_" format="integer" />
+        <attr name="minGapAngle" format="integer" />
     </declare-styleable>
 </resources>
