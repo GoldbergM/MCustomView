@@ -15,7 +15,6 @@
         <attr name="reflectionColor" format="color|integer" />
     </declare-styleable>
 
-
     <declare-styleable name="MaterialProgressView">
         <attr name="border_Width" format="dimension" />
         <attr name="paintColors" format="reference" />
@@ -23,5 +22,12 @@
         <attr name="sweepDuration" format="integer" />
         <attr name="minSweepAngle_" format="integer" />
         <attr name="minGapAngle" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="IOSProgressView">
+        <attr name="iColor" format="color" />
+        <attr name="iRadius" format="dimension" />
+        <attr name="iLeafCount" format="integer" />
+        <attr name="iDuration" format="integer" />
     </declare-styleable>
 </resources>

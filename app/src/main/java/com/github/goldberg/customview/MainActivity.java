@@ -17,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
-      //  final MaterialProgressView materialProgressView = (MaterialProgressView) findViewById(R.id.materialProgressView);
-//        initViews();
     }
 
     private void initViews() {

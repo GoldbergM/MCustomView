@@ -12,12 +12,19 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:padding="10dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:angleDuration="2000"
         app:border_Width="5dp"
         app:minGapAngle="50"
         app:minSweepAngle_="20"
         app:paintColors="@array/colors"
         app:sweepDuration="1000" />
+
+    <com.github.goldberg.customview.circularprogressbar.IOSProgressView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:visibility="visible"
+        app:iColor="?colorPrimary"
+        app:iRadius="12dp" />
 
 </RelativeLayout>
