@@ -48,7 +48,7 @@ public class MaterialProgressView extends View {
     private int mMinSweepAngle;//保留的最小角度
     private int mMinGapAngle;//最小间隙角度
     private static final int MIN_SWEEP_ANGLE_DEFAULT = 20;
-    private static final int MIN_GAP_ANGLE_DEFAULT = 40;
+    private static final int MIN_GAP_ANGLE_DEFAULT = 50;
 
     private int mCurrentAngle;//旋转的角度
     private int mCurrentSweepAngle;//draw的角度
