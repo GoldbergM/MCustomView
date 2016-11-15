@@ -65,7 +65,6 @@ public class ShimmerView extends TextView {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 dx = (int) animation.getAnimatedValue();
-
                 matrix.reset();
                 matrix.setTranslate(dx, 0);
                 linearGradient.setLocalMatrix(matrix);
