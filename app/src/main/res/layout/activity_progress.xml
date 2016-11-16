@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@android:color/background_dark"
     tools:context="com.github.goldberg.customview.MainActivity">
 
     <com.github.goldberg.customview.circularprogressbar.MaterialProgressView
@@ -21,10 +22,14 @@
         app:sweepDuration="1000" />
 
     <com.github.goldberg.customview.circularprogressbar.IOSProgressView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:visibility="visible"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
         app:iColor="?colorPrimary"
+        app:iGradient="true"
         app:iRadius="12dp" />
 
+    <com.github.goldberg.customview.circularprogressbar.NougatBootView
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
 </RelativeLayout>

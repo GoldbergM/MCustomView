@@ -29,5 +29,8 @@
         <attr name="iRadius" format="dimension" />
         <attr name="iLeafCount" format="integer" />
         <attr name="iDuration" format="integer" />
+        <attr name="iGradient" format="boolean" />
+        <attr name="iGradientDuration" format="integer" />
+
     </declare-styleable>
 </resources>
