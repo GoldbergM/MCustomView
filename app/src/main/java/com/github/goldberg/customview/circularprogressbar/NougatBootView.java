@@ -6,10 +6,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PathMeasure;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
@@ -18,6 +20,9 @@ import android.view.animation.LinearInterpolator;
  */
 
 public class NougatBootView extends View {
+
+    private static final String TAG = "NougatBootView";
+
     private int color = Color.parseColor("#DB4437");
     private int color1 = Color.parseColor("#F4B400");
     private int color2 = Color.parseColor("#4285F4");
@@ -41,6 +46,14 @@ public class NougatBootView extends View {
     private static final int STROKE_WIDTH_DEFAULT = 8;
 
 
+    private int widthDefault;
+    private int heightDefault;
+
+    private PathMeasure pathMeasure;
+    private float[] currentPoint;
+    private ValueAnimator pathAnimator;
+    private float currentPathLength;
+
     public NougatBootView(Context context) {
         this(context, null);
     }
@@ -55,8 +68,6 @@ public class NougatBootView extends View {
     }
 
     private void init(Context context, AttributeSet attributeSet) {
-
-
         mPaint = new Paint();
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
@@ -83,6 +94,7 @@ public class NougatBootView extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldW, int oldH) {
         super.onSizeChanged(w, h, oldW, oldH);
+        Log.e(TAG, "onSizeChanged");
         mWidth = w;
         mHeight = h;
         mContentWidth = mWidth - getPaddingLeft() - getPaddingRight();
@@ -110,14 +122,30 @@ public class NougatBootView extends View {
         path.cubicTo(p4[0], p4[1], p5[0], p5[1], p6[0], p6[1]);
         path.cubicTo(p7[0], p7[1], p8[0], p8[1], p9[0], p9[1]);
         path.cubicTo(p10[0], p10[1], p11[0], p11[1], p0[0], p0[1]);
+        pathMeasure = new PathMeasure(path, true);
+        currentPoint = new float[2];
+        pathAnimator = ValueAnimator.ofFloat(0, pathMeasure.getLength());
+        pathAnimator.setDuration(10000);
+        pathAnimator.setInterpolator(new LinearInterpolator());
+        pathAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        pathAnimator.setRepeatMode(ValueAnimator.RESTART);
+        pathAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                currentPathLength = (float) animation.getAnimatedValue();
+                pathMeasure.getPosTan(currentPathLength, currentPoint, null);
+                invalidate();
+            }
+        });
         valueAnimator.start();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+//        canvas.drawCircle(currentPoint[0], currentPoint[1], 15, mPaint);
         for (int i = 0; i < 4; i++) {
-            canvas.save();
+            int count = canvas.save();
             switch (i) {
                 case 0:
                     mPaint.setColor(color);
@@ -140,9 +168,29 @@ public class NougatBootView extends View {
                     canvas.drawPath(path, mPaint);
                     break;
             }
-            canvas.restore();
+
+            canvas.restoreToCount(count);
         }
 
     }
 
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        Log.e(TAG, "onMeasure");
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        if (widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.AT_MOST) {
+            widthDefault = widthSize / 2;
+            heightDefault = heightSize / 2;
+            setMeasuredDimension(widthDefault, heightDefault);
+        } else if (widthMode == MeasureSpec.AT_MOST) {
+            setMeasuredDimension(widthDefault, heightSize);
+        } else if (heightMode == MeasureSpec.AT_MOST) {
+            setMeasuredDimension(widthSize, heightDefault);
+        }
+    }
 }

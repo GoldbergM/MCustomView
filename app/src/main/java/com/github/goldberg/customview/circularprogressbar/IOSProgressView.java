@@ -202,6 +202,12 @@ public class IOSProgressView extends View {
     }
 
     @Override
+    public void setVisibility(int visibility) {
+        super.setVisibility(visibility);
+        Log.e(TAG, "setVisibility");
+    }
+
+    @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         Log.e(TAG, "onAttachedToWindow");

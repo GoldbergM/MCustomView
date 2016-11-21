@@ -55,19 +55,20 @@
         android:textSize="60sp"
         android:visibility="gone" />
 
-    <com.github.goldberg.customview.circularprogressbar.MaterialProgressView
+    <com.github.goldberg.customview.circularprogressbar.MaterialProgressViewWithoutHandler
         android:id="@+id/materialProgressView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:padding="10dp"
-        android:visibility="gone"
-        app:angleDuration="3500"
+        android:visibility="visible"
+        app:angleDuration="1500"
         app:border_Width="3dp"
         app:minSweepAngle_="20"
         app:paintColors="@array/colors"
         app:sweepDuration="1000" />
 
     <ProgressBar
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@+id/materialProgressView" />

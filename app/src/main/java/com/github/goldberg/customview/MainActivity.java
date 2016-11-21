@@ -16,7 +16,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_progress);
+        setContentView(R.layout.activity_main);
+//        final IOSProgressView iosProgressView = (IOSProgressView) findViewById(R.id.iOSProgressView);
+//        iosProgressView.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                iosProgressView.setVisibility(View.INVISIBLE);
+//            }
+//        }, 1000);
+//        iosProgressView.setTranslationX(10);
+//        iosProgressView.setLeft(10);
+//        Log.e("MainActivity", getResources().getDisplayMetrics().density
+//                + "--" + iosProgressView.getLeft() + "--" + iosProgressView.getX());
     }
 
     private void initViews() {
